@@ -23,12 +23,19 @@ function toggleImportance() {
 
 function toggleVisibility() {
   if(isPanelVisible) {
-    $("#form").css({display: 'none'})
+    // $("#form").css({display: 'none'})
+    $("#form").removeClass("show-form")
+    $("#form").addClass("hide-form")
+
     $("#btnVisibility").text("Show Form")
     isPanelVisible = false
   }
   else {
-    $("#form").css({display: 'block'})
+    // $("#form").css({display: 'block'})
+
+    $("#form").removeClass("hide-form")
+    $("#form").addClass("show-form")
+
     $("#btnVisibility").text("Hide Form")
 
     isPanelVisible = true

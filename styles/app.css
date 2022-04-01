@@ -2,39 +2,63 @@ html,
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 h1 {
-  color: rgb(3, 123, 192);
-  /* background: red; */
+  color: grey;
   text-align: center;
 }
 
 h1 span {
-  color: grey;
+  color: rgb(3, 123, 192);
 }
 
 main {
   display: flex;
+  column-gap: 2rem;
   /* flex-direction: row-reverse; */
 }
 
 #sect-list {
-  flex: 1;
-  background-color: rgb(182, 216, 236);
+  flex: 2;
+  background-color: rgb(215, 241, 255);
+  /* background-color: rgb(233, 233, 233); */
   min-height: 200px;
   height: calc(100vh - 38px - 44px);
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+  border-radius: 10px;
+  box-shadow: 4px 8px 30px -5px rgb(0, 0, 0, 0.13);
 }
 
 #form {
   flex: 1;
   background-color: rgb(215, 241, 255);
   border-radius: 10px;
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
   padding: 2rem;
+  box-shadow: 4px 8px 30px -5px rgb(0, 0, 0, 0.13);
+}
+
+div.btn {
+  text-align: center;
+  margin-top: 2rem;
+  /* background: rgb(162, 131, 131); */
+}
+.btn-register {
+  background: rgb(3, 123, 192);
+  cursor: pointer;
+  padding: .5rem;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  transition: 0.1s ease-in-out;
+}
+
+.btn-register:hover {
+  background: rgb(0, 86, 136);
 }
 
 .control {
@@ -70,27 +94,70 @@ main {
   color: rgb(0, 86, 136);
 }
 
-#btnVisibility {
-  background: rgb(0, 86, 136);
-  color: white;
-  padding: 1rem;
-  border-radius: 10px;
-  border: none;
-  transition: 0.2s ease-in-out;
-  cursor: pointer;
-  animation: grow infinite 0.8s linear alternate;
+section#form{
+  transition: all .7s ease-out;
 }
 
+.hide-form {
+  position: relative;
+  left: 726px;
+}
+
+.show-form {
+  position: relative;
+  left: 0;
+}
+
+/* Button show/hide */
+main section#sect-list {
+  position: relative;
+}
+
+button#btnVisibility {
+  position: absolute;
+  top: 50%;
+  right: -2%;
+  z-index: 1;
+}
+
+#btnVisibility {
+  animation: grow infinite 0.8s linear alternate;
+  background: rgb(3, 123, 192);
+  border-radius: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: .5rem;
+  transition: 0.1s ease-in-out;
+  width: 100px;
+
+}
+
+#btnVisibility::before {
+  content: "";
+  top: 23%;
+  right: -3%;
+  height: 15px;
+  width: 15px;
+  background: rgb(3, 123, 192);
+  transform: rotate(-50deg);
+  position: absolute;
+  transition: 0.1s ease-in-out;
+}
+
+#btnVisibility:hover::before,
 #btnVisibility:hover {
   background: rgb(0, 86, 136);
-  color: white;
 }
 
 @keyframes grow {
   from {
-    font-size: 16px;
+    transform: scale(1);
   }
+
   to {
-    font-size: 20px;
+    transform: scale(1.1);
   }
 }
+/* ----------------- */
+
