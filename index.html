@@ -14,60 +14,67 @@
 
     <main>
       <section id="sect-list">
-        <button id="btnVisibility" onclick="toggleVisibility()">Hide Form</button>
+        <div id="taskContainer" class="">
+          <!-- render task here -->
+        </div>
       </section>
 
       <!-- ---------- -->
       <section id="form">
-        <div class="control">
-          <label for="">Important?</label>
-          <i id="iImportant" class="far fa-thumbs-up icon-important"></i>
-        </div>
+        <button id="btnVisibility" onclick="toggleVisibility()">Hide Form</button>
 
-        <div class="control">
-          <label for="">Title:</label>
-          <input type="text">
-        </div>
+        <div class="form-container">
+          <div class="control">
+            <label for="">Important?</label>
+            <i id="iImportant" class="far fa-thumbs-up icon-important"></i>
+          </div>
 
-        <div class="control">
-          <label for="">Description:</label>
-          <textarea rows="3"></textarea>
-        </div>
+          <div class="control">
+            <label for="">Title:</label>
+            <input id="txtTitle" type="text">
+          </div>
 
-        <div class="control">
-          <label for="">DueDate:</label>
-          <input type="datetime-local">
-        </div>
+          <div class="control">
+            <label for="">Description:</label>
+            <textarea id="txtDescription" rows="5" cols="24"></textarea>
+          </div>
 
-        <div class="control">
-          <label for="">Start Date:</label>
-          <input type="datetime-local">
-        </div>
+          <div class="control">
+            <label for="">Start Date:</label>
+            <input id="selStartDate" type="datetime-local">
+          </div>
 
-        <div class="control">
-          <label for="">Color:</label>
-          <input type="color">
-        </div>
+          <div class="control">
+            <label for="">DueDate:</label>
+            <input id="selDueDate" type="datetime-local">
+          </div>
 
-        <div class="control">
-          <label for="">Category:</label>
-          <select name="category" id="txtCategory">
-            <!-- <option value="" disabled selected hidden>Category</option> -->
-            <option value="1">Home</option>
-            <option value="2">Work</option>
-            <option value="3">Personal</option>
-            <option value="4">Family</option>
-          </select>
-        </div>
+          <div class="control">
+            <label for="">Category:</label>
+            <select id="selCategory" name="category" id="txtCategory">
+              <!-- <option value="" disabled selected hidden>Category</option> -->
+              <option value="1">Home</option>
+              <option value="2">Work</option>
+              <option value="3">Personal</option>
+              <option value="4">Family</option>
+            </select>
+          </div>
 
-        <div class="btn control">
-          <button class="btn-register">Register Task</button>
+          <div class="control">
+            <label for="">Color:</label>
+            <input id="txtColor" type="color">
+          </div>
+
+          <div class="btn control">
+            <button class="btn-register" id="btnSave">Register Task</button>
+          </div>
         </div>
       </section>
     </main>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./scripts/main.js"></script>
+    <script src="./scripts//task.js"></script>
   </body>
 </html>
 

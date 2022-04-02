@@ -2,7 +2,22 @@ html,
 body {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  background: #f1f1f1;
+  /* background: bl; */
   overflow: hidden;
+  font-family: 'Kalam', cursive;
+}
+
+body {
+  /* background-image: url("../img/bg-stars.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center; */
+}
+
+button {
+  font-family: 'Kalam', cursive;
 }
 
 h1 {
@@ -16,35 +31,46 @@ h1 span {
 
 main {
   display: flex;
-  column-gap: 2rem;
+  column-gap: 5rem;
   /* flex-direction: row-reverse; */
 }
 
 #sect-list {
   flex: 2;
-  background-color: rgb(215, 241, 255);
-  /* background-color: rgb(233, 233, 233); */
+  overflow:auto;
+  /* background: #ffffff; */
+  background-color: rgb(168, 225, 255);
+  /* background-color: rgba(215, 241, 255, 0.456);
+  backdrop-filter: blur(1px); */
   min-height: 200px;
   height: calc(100vh - 38px - 44px);
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
   border-radius: 10px;
   box-shadow: 4px 8px 30px -5px rgb(0, 0, 0, 0.13);
 }
 
 #form {
   flex: 1;
-  background-color: rgb(215, 241, 255);
+  /* min-height: 50%; */
+  height: 100%;
+  background-color: rgb(168, 225, 255);
+  /* background-color: rgba(215, 241, 255, 0.473);
+  backdrop-filter: blur(1px); */
   border-radius: 10px;
   /* margin-left: 1rem; */
-  padding: 2rem;
+  padding: 1.2rem;
   box-shadow: 4px 8px 30px -5px rgb(0, 0, 0, 0.13);
+}
+
+section .form-container {
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 1rem;
 }
 
 div.btn {
   text-align: center;
   margin-top: 2rem;
+
   /* background: rgb(162, 131, 131); */
 }
 .btn-register {
@@ -77,7 +103,6 @@ div.btn {
 
 .icon-important {
   color: rgb(3, 123, 192);
-  font-size: 28px;
   cursor: pointer;
   transition: 0.2s ease;
 }
@@ -88,10 +113,12 @@ div.btn {
 
 .far {
   color: rgb(3, 123, 192);
+  font-size: 1.5rem;
 }
 
 .fas {
-  color: rgb(0, 86, 136);
+  color: rgb(3, 123, 192);
+  font-size: 1.5rem;
 }
 
 section#form{
@@ -100,7 +127,7 @@ section#form{
 
 .hide-form {
   position: relative;
-  left: 726px;
+  left: 29%;
 }
 
 .show-form {
@@ -109,14 +136,14 @@ section#form{
 }
 
 /* Button show/hide */
-main section#sect-list {
+main section#form {
   position: relative;
 }
 
 button#btnVisibility {
   position: absolute;
   top: 50%;
-  right: -2%;
+  left: -15%;
   z-index: 1;
 }
 
@@ -133,7 +160,7 @@ button#btnVisibility {
 
 }
 
-#btnVisibility::before {
+#btnVisibility::after {
   content: "";
   top: 23%;
   right: -3%;
@@ -145,7 +172,7 @@ button#btnVisibility {
   transition: 0.1s ease-in-out;
 }
 
-#btnVisibility:hover::before,
+#btnVisibility:hover::after,
 #btnVisibility:hover {
   background: rgb(0, 86, 136);
 }
@@ -161,3 +188,101 @@ button#btnVisibility {
 }
 /* ----------------- */
 
+
+/* Task section */
+.task {
+  background: #ffffff;
+  border-radius: 6px;
+  border: solid 1px lightgrey;
+  width: 85%;
+  padding: 1rem;
+  margin-bottom: 10px;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  animation: appear  0.5s linear alternate;
+  position: relative;
+  box-shadow: 4px 8px 30px -5px rgb(0, 0, 0, 0.13);
+
+}
+
+@keyframes appear {
+  0% {
+    top: -15px;
+  }
+
+  100% {
+    top: -10px;
+  }
+
+  100% {
+    top: 0px;
+  }
+}
+
+.task h5 {
+  margin: 0;
+  position: relative;
+}
+
+.task:hover {
+  /* border-color: red; */
+  border-left-width: 5px;
+}
+
+.task .info {
+  flex: 2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.task .info h5 {
+  font-size: 20px;
+}
+.task .info h4 {
+  margin: .5rem 0;
+  color: grey;
+}
+
+.task .info {
+  position: relative;
+}
+
+.task .description {
+  flex: 1;
+  padding-left: 1rem;
+  border-left: 1px solid lightgrey;
+  display: flex;
+  align-items: center;
+}
+
+.task .description p {
+  margin: 0;
+  /* color: grey; */
+}
+
+.task .icon-important-task {
+  /* color: red; */
+  position: absolute;
+  top: .1rem;
+  right: .1rem;
+  animation: thumbUp infinite .5s linear alternate;
+  box-shadow: 4px 8px 30px -5px rgb(0, 0, 0, 0.13);
+
+}
+
+.task .date {
+  color: grey;
+  font-size: 14px;
+}
+/* @keyframes thumbUp{
+  from {
+    transform: rotate(-5deg);
+  }
+  to {
+  transform: rotate(-15deg);
+  }
+} */
