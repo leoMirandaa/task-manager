@@ -267,6 +267,9 @@ button#btnVisibility {
   }
 }
 
+.input-error {
+  border: solid 2px red;
+}
 
 .error {
   background: rgb(255, 174, 174);
@@ -279,7 +282,6 @@ button#btnVisibility {
   width: auto;
   font-weight: 200;
   animation: errorInput .4s linear alternate;
-
 }
 
 h6 {

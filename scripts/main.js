@@ -57,9 +57,11 @@ function saveTask() {
   //if the title is empty, show an error and DO NOT continue
   if(title.length < 5) {
     $("#alertError").removeClass("hide");
+    $("#txtTitle").addClass("input-error");
 
     setTimeout(function() {
       $("#alertError").addClass("hide");
+      $("#txtTitle").removeClass("input-error");
     },5000 );
     return;
   }
