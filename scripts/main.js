@@ -43,8 +43,6 @@ function toggleVisibility() {
 }
 
 function saveTask() {
-  console.log('Save task...');
-
   //Read values
   let important = $("#iImportant").val()
   let title = $("#txtTitle").val();
@@ -55,16 +53,66 @@ function saveTask() {
   let color = $("#txtColor").val();
   important = !isImportant;
 
+  //data validations
+  //if the title is empty, show an error and DO NOT continue
+  if(title.length < 5) {
+    $("#alertError").removeClass("hide");
 
+    setTimeout(function() {
+      $("#alertError").addClass("hide");
+    },5000 );
+    return;
+  }
+  console.log('leo');
   let task = new Task (important, title, description, dueDate, startDate, category, color)
-  console.log("task.. ", task);
 
   //send the task to server
-
+  sendTaskToServer(task)
 
   //display the task
-  displayTask(task);
+  // displayTask(task);
+
+    //clear form
+  // clearForm();
 }
+
+//send the task to server
+function sendTaskToServer(task) {
+
+  let jsonData = JSON.stringify(task); //encode the obj to a json string
+  // console.log("jsonData ",jsonData);
+
+  $.ajax({
+    type:"POST",
+    url : "https://fsdiapi.azurewebsites.net/api/tasks/",
+    data: jsonData,
+    contentType: "application/json",//specify
+
+    success: function(data) {
+      console.log("success... ", data);
+      displayTask(task);
+      clearForm();
+    },
+    error: function(errorDetails) {
+      console.log("errorDetails... ", errorDetails);
+      //show an error
+    },
+  });
+  //display the task
+  // displayTask(task);
+}
+
+function clearForm() {
+  let important = $("#iImportant").val()
+  let title = $("#txtTitle").val("");
+  let description = $("#txtDescription").val("");
+  let dueDate = $("#selDueDate").val("");
+  let startDate = $("#selStartDate").val("");
+  let category = $("#selCategory").val("");
+  let color = $("#txtColor").val("#000000");
+}
+
+
 // <!--h1>important: ${task.important}</!--h1>
 function displayTask(task) {
   let category = getCategory(task.category)
@@ -83,9 +131,9 @@ function displayTask(task) {
         </div>
       </div>
 
-    <div class="description">
-      <p>${task.description}</p>
-    </div>
+      <div class="description">
+        <p>${task.description}</p>
+      </div>
 
     </div>
   `
@@ -112,8 +160,42 @@ function getCategory(categoryId) {
   return category
 }
 
+function loadTasks() {
+  $.ajax({
+    type: "GET",
+    url : "https://fsdiapi.azurewebsites.net/api/tasks",
+    success: function(jsonData) {
+      console.log('success... ', jsonData);
+
+      let data = JSON.parse(jsonData)
+      console.log('data... ', data);
+
+      //travel the array, get every element foromthe array()
+
+      for (let i = 0; i < data.length; i++) {
+        // task.owner === "Leo" && displayTask(task)
+
+        let task = data[i]
+
+        // if the task  belong to me, then
+        if(task.owner === "Leo") {
+          displayTask(task)
+        }
+      }
+      //send the task to be displayed on screen
+    },
+    error: function(errorDetails) {
+      console.log('error... ',errorDetails);
+    }
+
+
+  })
+}
+
 function init() {
   console.log("Task manager");
+
+  loadTasks();
 
   //load data
 
